@@ -6,26 +6,19 @@ package top.asimov.interview;
 public class Aurogp {
 
     /**
-     * 写一个函数，将字符串 "hello this is a computer" 转换成 "computer a is this hello"
+     * 写一个函数，将字符串 "quick fox jumps over the lazy dog" 转换成 "dog lazy the over jumps fox quick"
      */
     public static String solution(String target, String delimiter) {
+        StringBuilder result = new StringBuilder();
         String[] split = target.split(delimiter);
-        int length = split.length;
-        String[] result = new String[length];
-        int j = length;
-        for (String value : split) {
-            result[j - 1] = value;
-            j--;
+        for (int i = split.length - 1; i >= 0; i--) {
+            result.append(split[i]).append(delimiter);
         }
-        StringBuilder sb = new StringBuilder();
-        for (String s : result) {
-            sb.append(s).append(delimiter);
-        }
-        return sb.toString();
+        return result.toString();
     }
 
     public static void main(String[] args) {
-        String message = "hello this is a computer";
+        String message = "quick fox jumps over the lazy dog";
         String delimiter = " ";
         System.out.println("input: " + message);
         System.out.println("output: " + solution(message, delimiter));
